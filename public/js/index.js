@@ -25,6 +25,7 @@ const salvarProcesso = ()=>{
                         <td>${response.processo.status}</td>
                         <td>
                             <button class="btn btn-danger" onclick="abrirAlertParaExcluirProcesso({{$processo->id}})">Excluir</button>
+                            <button class="btn btn-info" onclick="abrirAlertParaExcluirProcesso({{$processo->id}})">Editar</button>
                         </td>
                     </tr>`);
                 }
@@ -57,7 +58,15 @@ const deletarProcesso = (processoId) =>{
         }
     });
 }
+//Edição de cadastro
 
+$(document).on(click,'.btnEditarObjeto', function () {
+    
+});
+
+
+
+//Fim da edição
 $(document).ready(function(){
     $("#btn-teste").click(function (){ 
         salvarProcesso()

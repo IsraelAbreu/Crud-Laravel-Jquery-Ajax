@@ -1,4 +1,5 @@
 <?php
+use \App\Http\Controllers\ProcessosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,6 +12,7 @@
 |
 */
 
-Route::get('/', 'ProcessosController@index');
+Route::get('/', 'ProcessosController@index')->name('index.view');
 Route::post('/processos', 'ProcessosController@store');
 Route::delete('/processos/{id}', 'ProcessosController@destroy');
+Route::get('/processos/edit', 'ProcessosController@edit');
