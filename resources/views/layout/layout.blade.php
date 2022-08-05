@@ -10,24 +10,22 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <title>Controle de Objetos</title>
+    <style>
+      .container-cadastro{
+        width: 300px;
+      }
+    </style>
 </head>
 <body>
-    <ul class="nav justify-content-center">
+    <ul class="nav justify-content-center mt-5">
         <li class="nav-item">
-          <a class="nav-link active" href="{{route('index.view')}}">Inicio</a>
+          <a class="btn btn-primary" href="{{route('index.view')}}">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
+    </ul>
+    
     <div id="conteudo">
         <div class="container">
+          <hr>
             @yield('content')
         </div>
     </div>

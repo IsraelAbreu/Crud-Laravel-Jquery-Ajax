@@ -15,4 +15,6 @@ use \App\Http\Controllers\ProcessosController;
 Route::get('/', 'ProcessosController@index')->name('index.view');
 Route::post('/processos', 'ProcessosController@store');
 Route::delete('/processos/{id}', 'ProcessosController@destroy');
-Route::get('/processos/edit', 'ProcessosController@edit');
+// Route::match(['get', 'put'], '/processos/edit/{id}', 'ProcessosController@edit');
+Route::get('/processos/edit/{id}', 'ProcessosController@edit');
+Route::put('/processos/edit/{id}', 'ProcessosController@update');

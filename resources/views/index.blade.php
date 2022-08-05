@@ -2,7 +2,9 @@
 @section('content')
 <div class="mb-3">
     <div id="container">
-        <form name="formAdicionarObjeto">
+        <div class="container-cadastro">
+          <h3>Cadastrar Objeto</h3>
+          <form name="formAdicionarObjeto">
             <input id="_token" type="hidden" name="" value="{{csrf_token()}}">
             <div class="mb-3">
               <label class="form-label">Objeto</label>
@@ -12,8 +14,9 @@
               <label for=" " class="form-label">Status</label>
               <input type="text" class="form-control" id="status" name="status">
             </div>
-            <button type="button" class="btn btn-primary" id="btn-teste">Submit</button>
+            <button type="button" class="btn btn-primary" id="btn-teste">Cadastrar</button>
           </form>
+        </div>
           <hr>
           <table class="table">
             <thead>
@@ -32,11 +35,11 @@
                         <td>{{$processo->status}}</td>
                         <td>
                             <button class="btn btn-danger" onclick="abrirAlertParaExcluirProcesso({{$processo->id}})">Excluir</button>
-                            <button type="button" class="btn btn-primary btnEditarObjeto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-primary btnEditarObjeto" onclick="abrirAlertParaEditarProcesso({{$processo->id}})">
                               Editar
                             </button>
                               <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
                                 <div class="modal-content">
                                   <div class="modal-header">
@@ -46,16 +49,19 @@
                                   <div class="modal-body">
                                     <div class="mb-3">
                                       <label for="objeto" class="form-label">Objeto</label>
-                                      <input type="text" class="form-control" id="objeto" placeholder="nome do objeto">
+                                      <input type="text" class="form-control" id="inputObjetoEdit" placeholder="nome do objeto">
                                     </div>
                                     <div class="mb-3">
                                       <label for="status" class="form-label">Status</label>
-                                      <input type="text" class="form-control" id="status" placeholder="Estoque">
+                                      <input type="text" class="form-control" id="inputStatusEdit" placeholder="Estoque">
+                                    </div>
+                                    <div class="mb-3">
+                                      <input type="hidden" class="form-control" id="inputIdEdit">
                                     </div>
                                   </div>
                                   <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <button type="button" class="btn btn-primary">Salvar</button>
+                                    <button type="button" id="btn-update-submit" class="btn btn-primary" onclick="SalvarUpdateDoProcesso()">Salvar</button>
                                   </div>
                                 </div>
                               </div>

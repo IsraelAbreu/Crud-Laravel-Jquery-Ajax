@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Processo;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -16,7 +16,7 @@ class ProcessosController extends Controller
      */
     public function index()
     {
-        $processos = \App\Processo::all();
+        $processos = Processo::all();
         return view('index', compact('processos'));
     }
 
@@ -65,10 +65,10 @@ class ProcessosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        //
-        return view('edit');
+        $processo = Processo::find($id);
+        return response($processo, 200);
     }
 
     /**
@@ -80,7 +80,17 @@ class ProcessosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $processo = Processo::find($id);
+        $processoAtualizado = $processo->update($request->all());
+        if($processoAtualizado){
+            $response['error'] = false;
+            $response['msg'] = 'Processo Atualizado!';
+            return response($response, 200);
+        }
+        $response['error'] = true;
+        $response['msg'] = 'Não foi possível atualizar o processo!';
+        return response($response, 400);
+
     }
 
     /**
@@ -89,9 +99,10 @@ class ProcessosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-        $processo = \App\Processo::find($id);
+        $processo = \App\Processo::find(99);
         if(!isset($processo)){
             $response['error'] = true;
             $response['msg'] = 'Processo não encontrado!';

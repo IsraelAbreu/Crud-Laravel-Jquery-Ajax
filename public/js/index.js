@@ -1,4 +1,3 @@
-$("a").css("color","navy");
 const _token = $('#_token').val()
 
 const salvarProcesso = ()=>{
@@ -33,9 +32,7 @@ const salvarProcesso = ()=>{
         });
     }else{
         alert('Preencha todos os campos')
-    }
-        
-       
+    }       
 }
 
 const abrirAlertParaExcluirProcesso = (processoId)=>{
@@ -60,11 +57,47 @@ const deletarProcesso = (processoId) =>{
 }
 //Edição de cadastro
 
-$(document).on(click,'.btnEditarObjeto', function () {
-    
-});
+// const UpdateDeProcesso = () => {
+//     const objeto = $('#objeto').val()
+//     const status = $('#status').val()
 
 
+// }
+
+const abrirAlertParaEditarProcesso = (processoId) => {
+
+    $.ajax({
+        type: "get",
+        url: `/processos/edit/${processoId}`,
+        success: function (response){
+            $("#inputObjetoEdit").val(response.objeto);
+            $("#inputStatusEdit").val(response.status);
+            $("#inputIdEdit").val(response.id);
+
+
+            $("#modal-edit").modal("show")
+        }
+    });       
+}
+
+const SalvarUpdateDoProcesso = () =>{
+    const id = $('#inputIdEdit').val()
+    const objeto = $('#inputObjetoEdit').val()
+    const status = $('#inputStatusEdit').val()
+    $.ajax({
+        type: "put",
+        url: `/processos/edit/${id}`,
+        data: {
+            _token,
+            objeto,
+            status
+
+        },
+        success: function (response) {
+            alert(response.msg);
+        }
+    });
+}
 
 //Fim da edição
 $(document).ready(function(){
