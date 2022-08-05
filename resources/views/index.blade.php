@@ -34,7 +34,7 @@
                         <td>{{$processo->objeto}}</td>
                         <td>{{$processo->status}}</td>
                         <td>
-                            <button class="btn btn-danger" onclick="abrirAlertParaExcluirProcesso({{$processo->id}})">Excluir</button>
+                            <button type="button" class="btn btn-danger" onclick="abrirAlertParaExcluirProcesso({{$processo->id}})">Excluir</button>
                             <button type="button" class="btn btn-primary btnEditarObjeto" onclick="abrirAlertParaEditarProcesso({{$processo->id}})">
                               Editar
                             </button>

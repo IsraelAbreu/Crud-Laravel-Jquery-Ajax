@@ -23,8 +23,10 @@ const salvarProcesso = ()=>{
                         <td>${response.processo.objeto}</td>
                         <td>${response.processo.status}</td>
                         <td>
-                            <button class="btn btn-danger" onclick="abrirAlertParaExcluirProcesso({{$processo->id}})">Excluir</button>
-                            <button class="btn btn-info" onclick="abrirAlertParaExcluirProcesso({{$processo->id}})">Editar</button>
+                            <button type="button" class="btn btn-danger" onclick="abrirAlertParaExcluirProcesso({{$processo->id}})">Excluir</button>
+                            <button type="button" class="btn btn-primary btnEditarObjeto" onclick="abrirAlertParaEditarProcesso({{$processo->id}})">
+                                Editar
+                            </button>
                         </td>
                     </tr>`);
                 }

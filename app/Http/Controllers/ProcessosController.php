@@ -82,6 +82,7 @@ class ProcessosController extends Controller
     {
         $processo = Processo::find($id);
         $processoAtualizado = $processo->update($request->all());
+        
         if($processoAtualizado){
             $response['error'] = false;
             $response['msg'] = 'Processo Atualizado!';
@@ -102,7 +103,7 @@ class ProcessosController extends Controller
 
     public function destroy($id)
     {
-        $processo = \App\Processo::find(99);
+        $processo = \App\Processo::find($id);
         if(!isset($processo)){
             $response['error'] = true;
             $response['msg'] = 'Processo não encontrado!';
